@@ -37,9 +37,7 @@ if(this.state.tarefa.length > 0){
       });
     }
   };
-
-
-
+  
  remove =(id) =>{
     this.setState({
         lista:this.state.lista.filter((item)=>(
