@@ -14,16 +14,32 @@ handleChange = (e)=>{
 
 
 add = () =>{
+/* logica original para identificar por que não deu certo "erro tafera linha 21 tarefa undefined"
 if(this.state.tarefa.length > 0){
     this.setState({      
         lista: this.state.lista.concat({
-             tarefa:"",
-            id: Date.now()
+           tarefa,
+          id: Date.now()
           }),
-          tarefa:"",
-        })
+         tarefa:""
+        });
       }
+    }*/
+
+    let { tarefa, lista } = this.state;
+    if (tarefa !== "") {
+      this.setState({
+        lista: lista.concat({
+          tarefa,
+          id: Date.now()
+        }),
+        tarefa: ""
+      });
     }
+  };
+
+
+
  remove =(id) =>{
     this.setState({
         lista:this.state.lista.filter((item)=>(
@@ -45,7 +61,6 @@ if(this.state.tarefa.length > 0){
                  {this.state.lista.map((item) =>(
                      <li>
                          {item.tarefa}
-                         {item.id}
                          <img onClick={() => this.remove(item.id)} src={lixo} alt="iconde de pá "/>
                      </li>
                      
